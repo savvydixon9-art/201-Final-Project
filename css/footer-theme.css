@@ -1,0 +1,18 @@
+.site-footer-copy {
+  color: #6b9b6b;
+}
+
+.site-footer-link {
+  color: #6b9b6b;
+  text-decoration: none;
+}
+
+.site-footer-link:hover,
+.site-footer-link:focus {
+  color: #2f5a2f;
+  text-decoration: underline;
+}
+
+.site-footer-dot {
+  color: #6b9b6b;
+}

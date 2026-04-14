@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Modern Business - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Custom Google font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/headers.css" rel="stylesheet" />
+        <link href="css/footer-theme.css" rel="stylesheet" />
+    </head>
+    <body class="d-flex flex-column h-100 bg-light">
+        <main class="flex-shrink-0 side-lines">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 sticky-top site-header">
+                <div class="container px-5">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                            <li class="nav-item"><a class="nav-link" href="funfacts.html">Fun Facts</a></li>
+                            <li class="nav-item"><a class="nav-link" href="interactivegames.html">Interactive Games</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Interactive Games Section-->
+            <section class="py-5">
+                <div class="container px-5 mb-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-5 fw-bolder mb-0"><span class="d-inline" style="color: #2f5a2f;">Interactive Games</span></h1>
+                    </div>
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-11 col-xl-9 col-xxl-8">
+                            <div class="card shadow border-0 rounded-4 mb-5">
+                                <div class="card-body p-5">
+                                    <h2 class="fw-bolder mb-3" style="color: #2f5a2f;">How well do you know Savannah?</h2>
+                                    <p id="quizProgress" class="fw-bolder mb-2"></p>
+                                    <p id="quizQuestion" class="fw-bolder mb-3"></p>
+                                    <div id="textAnswerRow" class="row g-3 align-items-center">
+                                        <div class="col-12 col-md-8">
+                                            <input id="quizAnswerInput" type="text" class="form-control" placeholder="Type your answer here" />
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <button id="submitTextAnswer" class="btn w-100" style="background-color: #2f5a2f; color: #ffffff;">Submit</button>
+                                        </div>
+                                    </div>
+                                    <div id="mcqAnswers" class="d-grid gap-2" style="display: none !important;"></div>
+                                    <p id="quizFeedback" class="mt-3 mb-0 fw-bolder"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer-->
+        <footer class="bg-white py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 site-footer-copy">Copyright @ All About Savannah Dixon 2026</div></div>
+                    <div class="col-auto"></div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script>
+            const quizQuestions = [
+                {
+                    type: "text",
+                    prompt: "Question 1 - Where was Savannah born?",
+                    answers: ["san diego, ca", "san diego ca", "san diego, california", "san diego california"]
+                },
+                {
+                    type: "text",
+                    prompt: "Question 2 - Where did Savannah serve her mission?",
+                    answers: ["washington dc", "washington, dc", "washington d.c.", "washington d.c"]
+                },
+                {
+                    type: "text",
+                    prompt: "Question 3 - How many siblings does Savannah have?",
+                    answers: ["1", "one"]
+                },
+                {
+                    type: "text",
+                    prompt: "Question 4 - Where is Savannah living this summer?",
+                    answers: ["new york city", "nyc", "new york, ny"]
+                },
+                {
+                    type: "text",
+                    prompt: "Question 5 - What temple was Savannah endowed in?",
+                    answers: ["san diego, ca", "san diego ca", "san diego temple", "san diego, california", "san diego california"]
+                },
+                {
+                    type: "text",
+                    prompt: "Question 6 - What is Savannah's all time favorite movie?",
+                    answers: ["mamma mia 2", "mamma mia! here we go again", "mamma mia here we go again"]
+                },
+                {
+                    type: "text",
+                    prompt: "Question 7 - What color are Savannah's AirPod Max's?",
+                    answers: ["pink"]
+                }
+            ];
+
+            const quizProgress = document.getElementById("quizProgress");
+            const quizQuestion = document.getElementById("quizQuestion");
+            const textAnswerRow = document.getElementById("textAnswerRow");
+            const quizAnswerInput = document.getElementById("quizAnswerInput");
+            const submitTextAnswer = document.getElementById("submitTextAnswer");
+            const mcqAnswers = document.getElementById("mcqAnswers");
+            const quizFeedback = document.getElementById("quizFeedback");
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+
+            function normalizeAnswer(value) {
+                return value.toLowerCase().trim().replace(/\s+/g, " ");
+            }
+
+            function showCorrectThenAdvance() {
+                score += 1;
+                quizFeedback.textContent = "+1 CORRECT";
+                quizFeedback.style.color = "#2f5a2f";
+                setTimeout(function () {
+                    currentQuestionIndex += 1;
+                    renderQuestion();
+                }, 700);
+            }
+
+            function renderQuestion() {
+                if (currentQuestionIndex >= quizQuestions.length) {
+                    const percent = Math.round((score / quizQuestions.length) * 100);
+                    quizProgress.textContent = "Quiz complete!";
+                    quizQuestion.textContent = "Final Score: " + score + " out of " + quizQuestions.length + " (" + percent + "%)";
+                    textAnswerRow.style.display = "none";
+                    mcqAnswers.style.display = "none";
+                    quizFeedback.innerHTML = "Congrats! You know " + percent + "% about Savannah! Take her some Ben & Jerry's half baked ice cream to get to know her better! Or play again!<br><button id=\"playAgainBtn\" class=\"btn mt-3\" style=\"background-color: #2f5a2f; color: #ffffff;\">Play Again</button>";
+                    quizFeedback.style.color = "#2f5a2f";
+
+                    const playAgainBtn = document.getElementById("playAgainBtn");
+                    if (playAgainBtn) {
+                        playAgainBtn.addEventListener("click", function () {
+                            currentQuestionIndex = 0;
+                            score = 0;
+                            renderQuestion();
+                        });
+                    }
+                    return;
+                }
+
+                const q = quizQuestions[currentQuestionIndex];
+                quizProgress.textContent = "Question " + (currentQuestionIndex + 1) + " of " + quizQuestions.length;
+                quizQuestion.textContent = q.prompt;
+                quizFeedback.textContent = "";
+                quizAnswerInput.value = "";
+
+                if (q.type === "text") {
+                    textAnswerRow.style.display = "flex";
+                    mcqAnswers.style.display = "none";
+                } else {
+                    textAnswerRow.style.display = "none";
+                    mcqAnswers.style.display = "grid";
+                    mcqAnswers.innerHTML = "";
+
+                    q.options.forEach(function (option) {
+                        const btn = document.createElement("button");
+                        btn.type = "button";
+                        btn.className = "btn text-start";
+                        btn.style.backgroundColor = "#ffffff";
+                        btn.style.border = "1px solid #ced4da";
+                        btn.style.color = "#111111";
+                        btn.textContent = option.key + ": " + option.label;
+                        btn.addEventListener("click", function () {
+                            if (option.key === q.correctKey) {
+                                showCorrectThenAdvance();
+                            } else {
+                                quizFeedback.textContent = "Not quite. Try again!";
+                                quizFeedback.style.color = "#b02a37";
+                            }
+                        });
+                        mcqAnswers.appendChild(btn);
+                    });
+                }
+            }
+
+            if (submitTextAnswer) {
+                submitTextAnswer.addEventListener("click", function () {
+                    const q = quizQuestions[currentQuestionIndex];
+                    if (!q || q.type !== "text") return;
+
+                    const userAnswer = normalizeAnswer(quizAnswerInput.value);
+                    const isCorrect = q.answers.some(function (a) {
+                        return normalizeAnswer(a) === userAnswer;
+                    });
+
+                    if (isCorrect) {
+                        showCorrectThenAdvance();
+                    } else {
+                        quizFeedback.textContent = "Not quite. Try again!";
+                        quizFeedback.style.color = "#b02a37";
+                    }
+                });
+
+                quizAnswerInput.addEventListener("keydown", function (event) {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        submitTextAnswer.click();
+                    }
+                });
+            }
+
+            renderQuestion();
+        </script>
+    </body>
+</html>

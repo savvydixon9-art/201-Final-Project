@@ -1,0 +1,20 @@
+.site-header {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.site-header .nav-link {
+  color: #2f5a2f !important;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link:focus {
+  color: #234423 !important;
+}
+
+.site-page-title {
+  color: #2f5a2f;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
